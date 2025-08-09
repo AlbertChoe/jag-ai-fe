@@ -7,7 +7,7 @@ import axiosPrivate from '@/api/axiosPrivate';
 
 type MeResponse = {
   id: string;
-  email: string;
+  name: string;
   role: 'PETANI' | 'PAKAR';
 };
 
