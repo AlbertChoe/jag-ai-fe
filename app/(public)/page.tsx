@@ -1,27 +1,17 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import { useAuthStore } from '@/hooks/useAuthStore';
-import { Button } from '@/components/ui/button';
+import CsProducts from '@/components/home/csProducts';
+import HowItWorks from '@/components/home/howItWorks';
+import LandingHero from '@/components/home/landing';
+import Testimonial from '@/components/home/testimonial';
+import WhyChoose from '@/components/home/whyChoose';
 
 export default function HomePage() {
-  const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
-  const clearAuth = useAuthStore((s) => s.clearAuth);
-  const router = useRouter();
-
   return (
     <main className="p-6 space-y-4">
-      {isLoggedIn ? (
-        <Button
-          onClick={() => {
-            clearAuth();
-            router.push('/login');
-          }}
-        >
-          Logout
-        </Button>
-      ) : (
-        <Button onClick={() => router.push('/login')}>Login</Button>
-      )}
+      <LandingHero />
+      <WhyChoose />
+      <HowItWorks />
+      <CsProducts />
+      <Testimonial />
     </main>
   );
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import Navbar from '@/components/common/navbar';
 import { useAuthCheck } from '@/hooks/useAuthCheck';
 
@@ -9,7 +11,6 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
     <>
       <Navbar />
       {children}
-      {/* <main className="min-h-[calc(100vh-56px)]">{children}</main> */}
     </>
   );
 }
