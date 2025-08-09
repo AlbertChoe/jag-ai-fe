@@ -1,10 +1,9 @@
 import { create } from 'zustand';
 
-export type UserRole = 'user';
+export type UserRole = 'PETANI' | 'PAKAR';
 
 export type User = {
   id: string;
-  email: string;
   role: UserRole;
 };
 

@@ -1,5 +1,6 @@
+'use client';
 import { useRouter } from 'next/navigation';
-import { useAuthStore } from '@/app/hooks/useAuthStore';
+import { useAuthStore } from '@/hooks/useAuthStore';
 import { Button } from '@/components/ui/button';
 
 export default function HomePage() {

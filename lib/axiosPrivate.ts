@@ -1,4 +1,4 @@
-import { getToken } from '@/app/hooks/useAuthStore';
+import { getToken } from '@/hooks/useAuthStore';
 import axios from 'axios';
 
 const axiosPrivate = axios.create({
