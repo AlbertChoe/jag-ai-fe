@@ -3,15 +3,19 @@ import HowItWorks from '@/components/home/howItWorks';
 import LandingHero from '@/components/home/landing';
 import Testimonial from '@/components/home/testimonial';
 import WhyChoose from '@/components/home/whyChoose';
+import Footer from '@/components/home/footer';
 
 export default function HomePage() {
   return (
-    <main className="p-6 space-y-4">
-      <LandingHero />
-      <WhyChoose />
-      <HowItWorks />
-      <CsProducts />
-      <Testimonial />
+    <main className="flex flex-col">
+      <div className="px-6">
+        <LandingHero />
+        <WhyChoose />
+        <HowItWorks />
+        <CsProducts />
+        <Testimonial />
+      </div>
+      <Footer />
     </main>
   );
 }
