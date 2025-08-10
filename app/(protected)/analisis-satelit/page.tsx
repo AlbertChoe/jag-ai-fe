@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Search, ChevronDown, TrendingUp } from 'lucide-react';
+import { Search, ChevronDown, TrendingUp, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import dynamic from 'next/dynamic';
 import FertilityChart from '@/components/satelit/chart';
-
+import Image from 'next/image';
 // Dynamically import the map component to avoid SSR issues
 const MapComponent = dynamic(() => import('@/components/satelit/map'), {
   ssr: false,
@@ -57,7 +57,7 @@ export default function SatelitPage() {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Search Bar */}
-      <div className="absolute top-4 left-4 right-4 z-[1000]">
+      <div className="absolute top-4 left-12 right-4 z-[1000]">
         <div className="relative max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <input
@@ -69,14 +69,6 @@ export default function SatelitPage() {
           />
         </div>
       </div>
-
-      {/* Layers Control */}
-      {/* <div className="absolute top-20 left-4 z-[1000]">
-        <Button variant="outline" size="sm" className="bg-white shadow-lg">
-          <Layers className="w-4 h-4 mr-2" />
-          Layers
-        </Button>
-      </div> */}
 
       {/* Map Container */}
       <div className="w-full h-full">
@@ -118,8 +110,8 @@ export default function SatelitPage() {
                 <div className="relative">
                   <select className="w-full p-3 border border-gray-200 rounded-lg appearance-none bg-white">
                     <option>NDVI</option>
-                    <option>EVI</option>
-                    <option>SAVI</option>
+                    <option>NDRE</option>
+                    {/* <option>SAVI</option> */}
                   </select>
                   <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 </div>
@@ -130,7 +122,7 @@ export default function SatelitPage() {
                 <div className="relative">
                   <select className="w-full p-3 border border-gray-200 rounded-lg appearance-none bg-white">
                     <option>Sentinel-2</option>
-                    <option>Landsat-8</option>
+                    {/* <option>Landsat-8</option> */}
                   </select>
                   <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 </div>
@@ -162,32 +154,58 @@ export default function SatelitPage() {
 
             {/* Right Section - Recommendations */}
             <div className="space-y-4">
-              <div className="w-24 h-24 mx-auto bg-green-100 rounded-full flex items-center justify-center">
-                <div className="text-green-600">
-                  <TrendingUp className="w-8 h-8" />
-                </div>
+              {/* Logo Circle */}
+              <div className="relative mx-auto h-52 w-52 rounded-full bg-white shadow-md ring-8 ring-white">
+                <Image
+                  src="/images/logorekom.png"
+                  alt="Rekomendasi Pemupukan"
+                  fill
+                  className="p-3 object-contain"
+                  priority
+                />
               </div>
 
-              <Card className="bg-green-500 text-white">
-                <CardContent className="p-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                      <span className="text-sm">💡</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Periksa rekomendasi pemupukan</p>
-                      <p className="text-xs opacity-90">AI kami untuk lahan Anda!</p>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-white hover:bg-white hover:bg-opacity-20"
-                    >
-                      →
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Recommendation Card */}
+              <div className="relative">
+                {/* soft glow like the mock */}
+                <div className="pointer-events-none absolute -top-6 -left-8 h-20 w-20 rounded-full bg-white/50 blur-xl" />
+                <div className="pointer-events-none absolute -bottom-6 -left-10 h-24 w-24 rounded-full bg-white/20 blur-2xl" />
+
+                <button
+                  type="button"
+                  className="group flex w-full items-center gap-4 rounded-3xl
+               bg-gradient-to-r from-emerald-400 via-emerald-500 to-green-500
+               px-5 py-4 text-white shadow-lg ring-1 ring-emerald-600/20"
+                  // onClick={() => router.push('/rekomendasi')}
+                >
+                  {/* left badge */}
+                  <span
+                    className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white
+                     shadow-[inset_0_1px_1px_rgba(0,0,0,0.06),0_10px_24px_-10px_rgba(0,0,0,0.35)]"
+                  >
+                    <span className="pointer-events-none absolute inset-0 rounded-full bg-emerald-500/12 blur-sm" />
+                    <Image
+                      src="/icons/starAI.svg"
+                      alt="AI"
+                      width={22}
+                      height={22}
+                      className="opacity-90"
+                      priority
+                    />
+                  </span>
+
+                  {/* text */}
+                  <span className="flex-1 text-left leading-tight">
+                    <span className="block text-[18px] font-semibold drop-shadow-sm">
+                      Periksa rekomendasi pemupukan
+                    </span>
+                    <span className="block text-[18px] opacity-95">untuk lahan Anda!</span>
+                  </span>
+
+                  {/* arrow */}
+                  <ArrowRight className="h-6 w-6 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -42,14 +42,10 @@ export default function LandingHero() {
               <div className="h-[7rem] md:h-[9rem]" /> {/* Spacer */}
             </motion.div>
 
-            <motion.p
-              variants={item}
-              className="text-lg text-gray-700 leading-relaxed max-w-lg"
-            >
-              Tingkatkan produktivitas jagung hingga <strong>15%</strong> dengan
-              analisis satelit real-time, prediksi cuaca berbasis AI, dan akses
-              langsung ke pakar pertanian. Solusi digital cerdas untuk petani
-              jagung Indonesia.
+            <motion.p variants={item} className="text-lg text-gray-700 leading-relaxed max-w-lg">
+              Tingkatkan produktivitas jagung hingga <strong>15%</strong> dengan analisis satelit
+              real-time, prediksi cuaca berbasis AI, dan akses langsung ke pakar pertanian. Solusi
+              digital cerdas untuk petani jagung Indonesia.
             </motion.p>
 
             <motion.div variants={item}>
@@ -65,10 +61,7 @@ export default function LandingHero() {
             </motion.div>
           </div>
 
-          <motion.div
-            variants={item}
-            className="flex items-end justify-center gap-0 relative"
-          >
+          <motion.div variants={item} className="flex items-end justify-center gap-0 relative">
             <div className="relative w-[120px] md:w-[200px] h-[220px] md:h-[320px] overflow-hidden rounded-t-[24px] z-10">
               <Image
                 src="/images/hero1.png"
@@ -79,21 +72,11 @@ export default function LandingHero() {
             </div>
 
             <div className="relative w-[120px] md:w-[200px] h-[360px] md:h-[460px] overflow-hidden rounded-t-[24px] -ml-6 z-20 -mt-12">
-              <Image
-                src="/images/hero2.png"
-                alt="Tractor in field"
-                fill
-                className="object-cover"
-              />
+              <Image src="/images/hero2.png" alt="Tractor in field" fill className="object-cover" />
             </div>
 
             <div className="relative w-[120px] md:w-[200px] h-[500px] md:h-[600px] overflow-hidden rounded-t-[24px] -ml-6 z-30 -mt-12">
-              <Image
-                src="/images/hero3.png"
-                alt="Corn close-up"
-                fill
-                className="object-cover"
-              />
+              <Image src="/images/hero3.png" alt="Corn close-up" fill className="object-cover" />
             </div>
           </motion.div>
         </motion.div>

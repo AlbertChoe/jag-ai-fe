@@ -24,9 +24,7 @@ function NavLink({ href, label }: NavItem) {
     <Link
       href={href}
       className={`text-base transition ${
-        isActive
-          ? 'font-bold text-[#43A718]'
-          : 'text-black hover:text-[#43A718]'
+        isActive ? 'font-bold text-[#43A718]' : 'text-black hover:text-[#43A718]'
       }`}
     >
       {label}
@@ -39,7 +37,7 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const isLoggedIn = false; 
+  const isLoggedIn = false;
   if (!mounted) return null;
 
   return (

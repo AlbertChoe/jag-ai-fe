@@ -26,8 +26,8 @@ export default function FertilityChart({
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
 
   // height of each bar "track" (must match grid height below)
-  const TRACK_PX = 160; // Reduced to make room for labels
-  const LABEL_SPACE = 30; // Space for labels above bars
+  const TRACK_PX = 260; // Reduced to make room for labels
+  const LABEL_SPACE = 40; // Space for labels above bars
 
   return (
     <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-zinc-100">
