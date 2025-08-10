@@ -6,8 +6,8 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'My App',
-  description: 'My Next.js app',
+  title: 'JagAI',
+  description: 'JagAI - Solusi Cerdas untuk Pertanian Berkelanjutan',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

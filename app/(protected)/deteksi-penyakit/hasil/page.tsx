@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
@@ -31,14 +32,15 @@ function Item({ n, title, children }: { n?: number; title: string; children: Rea
   );
 }
 
-export default function HasilDeteksiPage() {
+// (Opsional) cegah prerender statis yang gagal
+export const dynamic = 'force-dynamic';
+
+function HasilDeteksiInner() {
   const params = useSearchParams();
   const router = useRouter();
 
-  // We receive a blob: or http(s) preview URL (set in the upload page)
   const img = params.get('preview') ?? '/images/phone.png';
 
-  // (Mock) inference result – wire these to your API later
   const result = {
     disease: 'Hawar Daun',
     severityPct: 85,
@@ -50,9 +52,7 @@ export default function HasilDeteksiPage() {
   return (
     <main className="bg-emerald-50/40">
       <div className="mx-auto w-full max-w-[1200px] px-6 py-6">
-        {/* Top row: photo + detection summary */}
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_420px]">
-          {/* Photo */}
           <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white">
             <div className="relative h-[360px] w-full">
               <Image
@@ -61,11 +61,12 @@ export default function HasilDeteksiPage() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 60vw"
+                // Jika preview berupa blob:, next/image lebih aman tanpa optimasi
+                unoptimized={img.startsWith('blob:')}
               />
             </div>
           </div>
 
-          {/* Result panel */}
           <div className="rounded-2xl border border-zinc-200 bg-white p-4">
             <div className="mb-3 flex items-center gap-2">
               <div className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-emerald-200 text-emerald-700">
@@ -236,5 +237,13 @@ export default function HasilDeteksiPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function HasilDeteksiPage() {
+  return (
+    <Suspense fallback={<div className="p-6 text-sm">Memuat hasil…</div>}>
+      <HasilDeteksiInner />
+    </Suspense>
   );
 }

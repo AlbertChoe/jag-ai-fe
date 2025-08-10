@@ -46,7 +46,7 @@ export default function Navbar() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+
   useEffect(() => setMounted(true), []);
 
   const user = useAuthStore((s) => s.user);
@@ -118,16 +118,25 @@ export default function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button
-              onClick={() => router.push('/login')}
-              className="bg-[#43A718] hover:bg-green-600 text-white font-bold rounded px-5"
-            >
-              Login
-            </Button>
+            <>
+              <Button
+                onClick={() => router.push('/login')}
+                className="bg-[#43A718] hover:bg-green-600 text-white font-bold rounded px-5"
+              >
+                Login
+              </Button>
+              <Button
+                onClick={() => router.push('/register')}
+                variant="outline"
+                className="border-[#43A718] text-[#43A718] hover:bg-green-50 font-bold rounded px-5"
+              >
+                Register
+              </Button>
+            </>
           )}
         </div>
 
-        <button 
+        <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden p-2 text-[#43A718]"
         >
@@ -145,15 +154,27 @@ export default function Navbar() {
               {isLoggedIn ? (
                 <span>User Menu</span>
               ) : (
-                <Button
-                  onClick={() => {
-                    router.push('/login');
-                    closeMobileMenu();
-                  }}
-                  className="w-full bg-[#43A718] hover:bg-green-600 text-white font-bold rounded px-5"
-                >
-                  Login
-                </Button>
+                <div className="flex flex-col gap-3">
+                  <Button
+                    onClick={() => {
+                      router.push('/login');
+                      closeMobileMenu();
+                    }}
+                    className="bg-[#43A718] hover:bg-green-600 text-white font-bold rounded px-5"
+                  >
+                    Login
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      router.push('/register');
+                      closeMobileMenu();
+                    }}
+                    variant="outline"
+                    className="border-[#43A718] text-[#43A718] hover:bg-green-50 font-bold rounded px-5"
+                  >
+                    Register
+                  </Button>
+                </div>
               )}
             </div>
           </nav>
