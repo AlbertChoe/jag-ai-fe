@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -33,17 +34,17 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const canSubmit = useMemo(() => {
-    return (
+  const canSubmit = useMemo(
+    () =>
       name.trim().length > 0 &&
       role !== '' &&
       email.trim().length > 0 &&
       password.length >= 6 &&
       confirm.length >= 6 &&
       password === confirm &&
-      !loading
-    );
-  }, [name, role, email, password, confirm, loading]);
+      !loading,
+    [name, role, email, password, confirm, loading],
+  );
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,7 +75,6 @@ export default function RegisterPage() {
         router.push('/login');
       }
     } catch (err: unknown) {
-      console.error('Registration error:', err);
       if (err instanceof AxiosError) {
         setError(
           err.response?.data?.message || err.response?.data?.error || 'Registration failed.',
@@ -88,96 +88,113 @@ export default function RegisterPage() {
   };
 
   return (
-    <Card className="w-full max-w-md p-6 shadow-sm">
-      <div className="mb-6 text-center">
-        <h1 className="text-2xl font-semibold">Create account</h1>
-        <p className="text-sm text-muted-foreground">Join us in a minute</p>
+    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
+      {/* Left hero – identical to Login */}
+      <div className="relative hidden md:flex items-center justify-center bg-green-600 text-white">
+        <div className="max-w-md px-10">
+          <p className="text-emerald-100 text-sm mb-2">Petani Pintar</p>
+          <h1 className="text-4xl font-semibold leading-tight">Hasil Maksimal</h1>
+
+          <div className="mt-10 flex items-center justify-center">
+            <div className="relative h-56 w-56 rounded-full ring-4 ring-white/30 ring-offset-2 ring-offset-green-600 overflow-hidden">
+              <Image src="/images/jagung.png" alt="Jagung" fill className="object-cover" priority />
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute inset-y-0 right-0 w-px bg-white/30" />
       </div>
 
-      <form onSubmit={onSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="name">Name</Label>
-          <Input
-            id="name"
-            placeholder="Your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            autoFocus
-          />
+      {/* Right form card */}
+      <div className="flex flex-col items-center justify-center p-6 bg-gray-50">
+        <div className="w-full max-w-sm mb-6">
+          <h2 className="text-2xl font-semibold text-center">
+            Buat Akun di <span className="text-green-600">JagAI</span>
+          </h2>
+          <p className="text-sm text-muted-foreground mt-1 text-center">
+            Daftar kurang dari satu menit
+          </p>
         </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="role">Role</Label>
-          <Select value={role} onValueChange={(v) => setRole(v as Role)}>
-            <SelectTrigger id="role" className="w-full">
-              <SelectValue placeholder="Select your role" />
-            </SelectTrigger>
-            <SelectContent>
-              {ROLES.map((r) => (
-                <SelectItem key={r} value={r}>
-                  {r}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
-          <Input
-            id="password"
-            type="password"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPass(e.target.value)}
-            required
-            minLength={6}
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="confirm">Confirm password</Label>
-          <Input
-            id="confirm"
-            type="password"
-            placeholder="••••••••"
-            value={confirm}
-            onChange={(e) => setConfirm(e.target.value)}
-            required
-            minLength={6}
-          />
-        </div>
-
-        {error && <p className="text-sm text-red-600">{error}</p>}
-
-        <Button
-          type="submit"
-          disabled={!canSubmit}
-          className="w-full bg-green-600 hover:bg-green-700 text-white"
-        >
-          {loading ? 'Creating…' : 'Create account'}
-        </Button>
-      </form>
-
-      <p className="mt-6 text-center text-sm">
-        Already have an account?{' '}
-        <Link href="/login" className="font-medium text-green-700 hover:underline">
-          Sign in
-        </Link>
-      </p>
-    </Card>
+        <Card className="w-full max-w-sm p-6 shadow-sm bg-white">
+          <form onSubmit={onSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Nama</Label>
+              <Input
+                id="name"
+                placeholder="Nama lengkap"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                autoFocus
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="role">Peran</Label>
+              <Select value={role} onValueChange={(v) => setRole(v as Role)}>
+                <SelectTrigger id="role" className="w-full">
+                  <SelectValue placeholder="Pilih peran Anda" />
+                </SelectTrigger>
+                <SelectContent>
+                  {ROLES.map((r) => (
+                    <SelectItem key={r} value={r}>
+                      {r}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPass(e.target.value)}
+                required
+                minLength={6}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="confirm">Konfirmasi Password</Label>
+              <Input
+                id="confirm"
+                type="password"
+                placeholder="••••••••"
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                required
+                minLength={6}
+              />
+            </div>
+            {error && <p className="text-sm text-red-600">{error}</p>}
+            <Button
+              type="submit"
+              disabled={!canSubmit}
+              className="w-full bg-green-600 hover:bg-green-700 text-white"
+            >
+              {loading ? 'Creating…' : 'Create account'}
+            </Button>
+          </form>
+          <p className="mt-6 text-center text-sm">
+            Sudah punya akun?{' '}
+            <Link href="/login" className="font-medium text-green-700 hover:underline">
+              Masuk
+            </Link>
+          </p>
+        </Card>
+      </div>
+    </div>
   );
 }

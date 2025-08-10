@@ -16,8 +16,9 @@ export default function Testimonial() {
                 Pak Suryanto – Petani Jagung Banyuwangi
               </h3>
               <p className="mt-3 sm:mt-4 italic text-sm sm:text-base text-black leading-relaxed">
-                "Sejak menggunakan JagAI, hasil panen saya meningkat 25%. Sistem prediksi cuacanya
-                sangat akurat, dan saya bisa jual langsung ke peternak dengan harga yang adil."
+                &quot;Sejak menggunakan JagAI, hasil panen saya meningkat 25%. Sistem prediksi
+                cuacanya sangat akurat, dan saya bisa jual langsung ke peternak dengan harga yang
+                adil.&quot;
               </p>
               <div className="mt-4 sm:mt-6">
                 <Link
@@ -44,18 +45,16 @@ export default function Testimonial() {
           </div>
         </div>
 
-        <div
-          className="lg:hidden rounded-xl p-6 sm:p-8"
-          style={{ backgroundColor: '#ECF5E7' }}
-        >
+        <div className="lg:hidden rounded-xl p-6 sm:p-8" style={{ backgroundColor: '#ECF5E7' }}>
           <div className="flex flex-col sm:flex-row sm:items-center gap-6">
             <div className="flex-1 text-center sm:text-left">
               <h3 className="font-semibold text-base text-black">
                 Pak Suryanto – Petani Jagung Banyuwangi
               </h3>
               <p className="mt-3 italic text-sm text-black leading-relaxed">
-                "Sejak menggunakan JagAI, hasil panen saya meningkat 25%. Sistem prediksi cuacanya
-                sangat akurat, dan saya bisa jual langsung ke peternak dengan harga yang adil."
+                &quot;Sejak menggunakan JagAI, hasil panen saya meningkat 25%. Sistem prediksi
+                cuacanya sangat akurat, dan saya bisa jual langsung ke peternak dengan harga yang
+                adil.&quot;
               </p>
               <div className="mt-4">
                 <Link
