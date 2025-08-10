@@ -3,13 +3,25 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { Upload } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function DeteksiPenyakitSection() {
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState<string | null>(null);
 
   const triggerPick = () => inputRef.current?.click();
-  const handleFile = (f?: File) => f && setFileName(f.name);
+  const goToResult = (file: File) => {
+    // Create a local preview URL; safe to pass between routes
+    const url = URL.createObjectURL(file);
+    router.push(`/deteksi-penyakit/hasil?preview=${encodeURIComponent(url)}`);
+  };
+
+  const handleFile = (f?: File) => {
+    if (!f) return;
+    setFileName(f.name);
+    goToResult(f);
+  };
 
   return (
     <section className="relative  bg-emerald-50/60">
