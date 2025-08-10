@@ -9,8 +9,8 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
 
   return (
     <>
-      <Navbar />
-      {children}
+      <Navbar /> {/* h-16 = 64px */}
+      <main className="min-h-[calc(100vh-64px)]">{children}</main>
     </>
   );
 }
