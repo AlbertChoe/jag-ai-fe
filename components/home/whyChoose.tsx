@@ -4,18 +4,18 @@ import Image from 'next/image';
 const items = [
   {
     title: 'Analisis Satelit Canggih',
-    desc: 'Pantau kondisi tanaman lewat citra satelit (NDVI). Rekomendasi pemupukan presisi & hemat biaya.',
+    desc: 'Pantau kondisi tanaman dan kesuburan tanah secara real-time menggunakan citra satelit Sentinel-2. Dapatkan laporan kesuburan tanah dan rekomendasi pemupukan yang tepat sasaran berdasarkan data NDVI dan NDRE.',
     icon: '/icons/phone.svg',
   },
   {
-    title: 'Prediksi AI Akurat',
-    desc: 'Prediksi waktu panen, harga puncak, dan potensi penyakit. Kurangi gagal panen hingga 30%.',
+    title: 'Deteksi Penyakit Tanaman',
+    desc: 'Identifikasi penyakit tanaman jagung seperti hawar daun dan karat daun secara otomatis menggunakan AI. Dapatkan rekomendasi penanganan yang tepat untuk mencegah kehilangan hasil hingga 50%.',
     icon: '/icons/globe.svg',
   },
   {
-    title: 'Marketplace Terintegrasi',
-    desc: 'Jual langsung ke peternak/pengepul tanpa tengkulak. Harga adil, transparan, menguntungkan.',
-    icon: '/icons/store.svg',
+    title: 'Konsultasi Ahli',
+    desc: 'Konsultasikan kondisi tanaman Anda ke praktisi pertanian berpengalaman dari berbagai daerah di Indonesia. Akses langsung ke jaringan penyuluh dan petani sukses melalui WhatsApp.',
+    icon: '/icons/ahli.svg',
   },
 ];
 
@@ -30,7 +30,7 @@ export default function WhyChoose() {
               <Image src={it.icon} alt="" width={40} height={40} />
             </div>
             <h3 className="font-semibold">{it.title}</h3>
-            <p className="mt-2 text-sm text-zinc-600">{it.desc}</p>
+            <p className="mt-2 text-sm text-[#9D9D9D]">{it.desc}</p>
           </div>
         ))}
       </div>
