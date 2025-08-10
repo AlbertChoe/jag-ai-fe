@@ -8,7 +8,7 @@ import Footer from '@/components/home/footer';
 export default function HomePage() {
   return (
     <main className="flex flex-col">
-      <div className="px-6">
+      <div className="px-4 sm:px-6">
         <LandingHero />
         <WhyChoose />
         <HowItWorks />
