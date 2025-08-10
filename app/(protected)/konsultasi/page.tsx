@@ -79,14 +79,12 @@ const practitioners: Practitioner[] = [
 const formatRupiah = (n: number) => (n <= 0 ? '' : new Intl.NumberFormat('id-ID').format(n));
 
 const parseRupiah = (s: string) => {
-  // keep digits only (so "Rp100.000,00" or "100,000.00" both work)
   const digits = s.replace(/\D/g, '');
   return digits ? Number(digits) : 0;
 };
 type PractitionerWithPrice = Practitioner & { priceValue: number };
 const practitionersWithPrice: PractitionerWithPrice[] = practitioners.map((p) => ({
   ...p,
-  // your price strings are like "Rp100,000.00" – we only care about the number
   priceValue: parseRupiah(p.price),
 }));
 
@@ -119,17 +117,6 @@ export default function ConsultationPage() {
     const message = `Halo ${name}, saya tertarik untuk konsultasi pertanian jagung dengan Anda.`;
     const url = `https://wa.me/${whatsapp.replace('+', '')}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
-  };
-
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`w-4 h-4 ${
-          i < Math.floor(rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
-        }`}
-      />
-    ));
   };
 
   const handlePriceChange =
@@ -278,9 +265,16 @@ export default function ConsultationPage() {
                       className="object-cover"
                       sizes="(max-width: 1280px) 50vw, 25vw"
                     />
-                    <span className="absolute left-3 top-3 rounded-full bg-emerald-600 px-2 py-0.5 text-xs font-semibold text-white shadow">
+                    <div className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-emerald-600 px-2 py-0.5 text-xs font-semibold text-white shadow">
+                      <Image
+                        src="/icons/star.svg" // yellow star icon file
+                        alt="Rating"
+                        width={12}
+                        height={12}
+                        className="object-contain"
+                      />
                       {practitioner.rating.toFixed(1)}
-                    </span>
+                    </div>
                   </div>
 
                   <CardContent className="p-3">
