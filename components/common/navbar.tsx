@@ -53,7 +53,7 @@ export default function Navbar() {
   const isLoggedIn =
     typeof rawIsLoggedIn === 'function' ? (rawIsLoggedIn as () => boolean)() : !!rawIsLoggedIn;
 
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   const initials = useMemo(() => {
     const n = mounted && user?.name ? user.name : 'U';

@@ -14,8 +14,8 @@ export default function Testimonial() {
             Pak Suryanto – Petani Jagung Banyuwangi
           </h3>
           <p className="mt-4 italic text-base text-black">
-            "Sejak menggunakan JagAI, hasil panen saya meningkat 25%. Sistem prediksi cuacanya
-            sangat akurat, dan saya bisa jual langsung ke peternak dengan harga yang adil."
+            &quot;Sejak menggunakan JagAI, hasil panen saya meningkat 25%. Sistem prediksi cuacanya
+            sangat akurat, dan saya bisa jual langsung ke peternak dengan harga yang adil.&quot;
           </p>
           <div className="mt-6">
             <Link
