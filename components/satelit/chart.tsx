@@ -62,8 +62,8 @@ export default function FertilityChart({
             {data.map((d, i) => {
               const pct = Math.max(0, Math.min(100, (d.value / max) * 100));
               const isHover = hoverIdx === i;
-              const base =
-                i < 2 ? 'from-indigo-600 to-indigo-500' : 'from-indigo-400 to-indigo-300';
+              const base = i < 2 ? 'from-green-600 to-green-500' : 'from-green-400 to-green-300';
+
               const opacity = i < 2 ? 'opacity-90' : i < 4 ? 'opacity-75' : 'opacity-60';
 
               return (

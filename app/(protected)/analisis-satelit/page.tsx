@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import dynamic from 'next/dynamic';
 import FertilityChart from '@/components/satelit/chart';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 // Dynamically import the map component to avoid SSR issues
 const MapComponent = dynamic(() => import('@/components/satelit/map'), {
   ssr: false,
@@ -24,6 +25,7 @@ interface AnalysisData {
 }
 
 export default function SatelitPage() {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [selectedArea, setSelectedArea] = useState<AnalysisData | null>(null);
   const [showPanel, setShowPanel] = useState(false);
@@ -176,7 +178,7 @@ export default function SatelitPage() {
                   className="group flex w-full items-center gap-4 rounded-3xl
                bg-gradient-to-r from-emerald-400 via-emerald-500 to-green-500
                px-5 py-4 text-white shadow-lg ring-1 ring-emerald-600/20"
-                  // onClick={() => router.push('/rekomendasi')}
+                  onClick={() => router.push('/rekomendasi')}
                 >
                   {/* left badge */}
                   <span
