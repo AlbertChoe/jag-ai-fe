@@ -1,11 +1,11 @@
 'use client';
 
 import Navbar from '@/components/common/navbar';
-import { useAuthCheck } from '@/hooks/useAuthCheck';
+// import { useAuthCheck } from '@/hooks/useAuthCheck';
 
 export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
-  const { checking } = useAuthCheck({ redirectOnFail: '/login' });
-  if (checking) return <div className="p-6">Checking session…</div>;
+  // const { checking } = useAuthCheck({ redirectOnFail: '/login' });
+  // if (checking) return <div className="p-6">Checking session…</div>;
 
   return (
     <>
